@@ -1,5 +1,5 @@
 docker build --rm -t centos-tomcat-leedogs:v2.1 . 
-docker run -dp 8888:8080 centos-tomcat-leedogs:v2.1 
+docker run -dp 8888:8080 centos-tomcat-leedogs:v2.1  dog
 http://localhost:8888/leeJS/
 
 docker run -it -p 8888:8080 centos-tomcat-leedogs:v2.1 dog
