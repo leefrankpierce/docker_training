@@ -1,4 +1,4 @@
-FROM centos
+FROM centos:7
 MAINTAINER “Yourname" <lee.pierce@aa.com>
 #RUN yum -y update
 #RUN yum -y install net-tools
