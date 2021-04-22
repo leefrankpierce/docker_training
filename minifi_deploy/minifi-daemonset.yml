@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: horusd
+  namespace: logging
+  labels:
+    app: minifi-agent
+#  annotations:
+#    fluxcd.io/automated: "false"
+#    fluxcd.io/ignore: "true"
+spec:
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: minifi-agent
+  template:
+    metadata:
+      labels:
+        app: minifi-agent
+    spec:
+      serviceAccountName: horusd
+      securityContext:
+        runAsUser: 0
+        runAsGroup: 0
+        fsGroup: 0
+      volumes:
+        - name: minifi-volume
+          configMap:
+            name: minifi-configmap
+        - name: var
+          hostPath:
+            path: /var
+        - name: minifi-ssl
+          secret:
+            secretName: minifi-ssl
+      containers:
+        - name: horusd
+          image: artifacts.aa.com/docker-prod/cs-sae-ltu/aa-cem-minifi-root:0.0.1
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: logagent-configmap
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 1Gi
+          volumeMounts:
+            - name: var
+              mountPath: /var
+            - name: minifi-volume
+              mountPath: /opt/minifi/minifi-0.6.0.1.1.1.0-25/conf/config.yml
+              subPath: config.yml
+              readOnly: true
+            - name: minifi-volume
+              mountPath: /opt/minifi/minifi-0.6.0.1.1.1.0-25/conf/bootstrap.conf
+              subPath: bootstrap.conf
+              readOnly: true
+            - name: minifi-ssl
+              mountPath: /opt/minifi/ssl/certs
+              readOnly: true
