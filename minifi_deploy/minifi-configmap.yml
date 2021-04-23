@@ -21,142 +21,120 @@ data:
     # See the License for the specific language governing permissions and
     # limitations under the License.
     #
-
+    
     # Java command to use when running MiNiFi
     java=java
-
+    
     # Username to use when running MiNiFi. This value will be ignored on Windows.
-    #run.as=minifi
-    #run.as=
-
+    run.as=
+    
     # Configure where MiNiFi's lib and conf directories live
     # When running as a Windows service set full paths instead of relative paths
     lib.dir=./lib
     conf.dir=./conf
-
+    
     # How long to wait after telling MiNiFi to shutdown before explicitly killing the Process
     graceful.shutdown.seconds=20
-
+    
     # The location for the configuration file
     # When running as a Windows service use the full path to the file
     nifi.minifi.config=./conf/config.yml
-
-    # Security Properties #
-    # These properties take precedence over any equivalent properties specified in config.yml #
-    #nifi.minifi.security.keystore=../certs/keystore.jks
-    #nifi.minifi.security.keystoreType=JKS
-    #nifi.minifi.security.keystorePasswd=??
-    #nifi.minifi.security.keyPasswd=??
-    #nifi.minifi.security.truststore=../certs/truststore.jks
-    #nifi.minifi.security.truststoreType=JKS
-    #nifi.minifi.security.truststorePasswd=??
-    #nifi.minifi.security.ssl.protocol=TLS
-    nifi.minifi.sensitive.props.key=
-    nifi.minifi.sensitive.props.algorithm=
-    nifi.minifi.sensitive.props.provider=
-    # MiNiFi Command & Control Configuration
-    # C2 Properties
-    # Enabling C2 Uncomment each of the following options
-    # define those with missing options
-    nifi.c2.enable=false
-    ## define protocol parameters
-    #nifi.c2.rest.url=https://
-    #nifi.c2.rest.url.ack=https://
-    ## heartbeat in milliseconds.  defaults to once a second
-    nifi.c2.agent.heartbeat.period=60000
-    ## define parameters about your agent
-    nifi.c2.agent.class=sae-azure-minifi
-    # Optional.  Defaults to a hardware based unique identifier
-    nifi.c2.agent.identifier=baggage-kube-1
-    ## Define TLS security properties for C2 communications
-    nifi.c2.security.truststore.location=
-    nifi.c2.security.truststore.password=
-    nifi.c2.security.truststore.type=JKS
-    nifi.c2.security.keystore.location=
-    nifi.c2.security.keystore.password=
-    nifi.c2.security.keystore.type=JKS
-    nifi.c2.security.need.client.auth=true
-
+    
     # Notifiers to use for the associated agent, comma separated list of class names
     #nifi.minifi.notifier.ingestors=org.apache.nifi.minifi.bootstrap.configuration.ingestors.FileChangeIngestor
     #nifi.minifi.notifier.ingestors=org.apache.nifi.minifi.bootstrap.configuration.ingestors.RestChangeIngestor
     #nifi.minifi.notifier.ingestors=org.apache.nifi.minifi.bootstrap.configuration.ingestors.PullHttpChangeIngestor
-
+    
     # File change notifier configuration
-
+    
     # Path of the file to monitor for changes.  When these occur, the FileChangeNotifier, if configured, will begin the configuration reloading process
     #nifi.minifi.notifier.ingestors.file.config.path=
     # How frequently the file specified by 'nifi.minifi.notifier.file.config.path' should be evaluated for changes.
     #nifi.minifi.notifier.ingestors.file.polling.period.seconds=5
-
+    
     # Rest change notifier configuration
-
+    
     # Port on which the Jetty server will bind to, keep commented for a random open port
     #nifi.minifi.notifier.ingestors.receive.http.port=8338
-
+    
     #Pull HTTP change notifier configuration
-
+    
     # Hostname on which to pull configurations from
-    #nifi.minifi.notifier.ingestors.pull.http.hostname=
+    #nifi.minifi.notifier.ingestors.pull.http.hostname=localhost
     # Port on which to pull configurations from
-    #nifi.minifi.notifier.ingestors.pull.http.port=443
+    #nifi.minifi.notifier.ingestors.pull.http.port=4567
     # Path to pull configurations from
     #nifi.minifi.notifier.ingestors.pull.http.path=/c2/config
     # Query string to pull configurations with
-    #nifi.minifi.notifier.ingestors.pull.http.query=
+    #nifi.minifi.notifier.ingestors.pull.http.query=class=raspi3
     # Period on which to pull configurations from, defaults to 5 minutes if commented out
-    #nifi.minifi.notifier.ingestors.pull.http.period.ms=10000
-
+    #nifi.minifi.notifier.ingestors.pull.http.period.ms=300000
+    
     # Periodic Status Reporters to use for the associated agent, comma separated list of class names
     #nifi.minifi.status.reporter.components=org.apache.nifi.minifi.bootstrap.status.reporters.StatusLogger
-
+    
     # Periodic Status Logger configuration
-
+    
     # The FlowStatus query to submit to the MiNiFi instance
     #nifi.minifi.status.reporter.log.query=instance:health,bulletins
     # The log level at which the status will be logged
     #nifi.minifi.status.reporter.log.level=INFO
     # The period (in milliseconds) at which to log the status
     #nifi.minifi.status.reporter.log.period=60000
-
+    
     # Disable JSR 199 so that we can use JSP's without running a JDK
     java.arg.1=-Dorg.apache.jasper.compiler.disablejsr199=true
-
+    
     # JVM memory settings
     java.arg.2=-Xms256m
     java.arg.3=-Xmx256m
-
+    
     # Enable Remote Debugging
     #java.arg.debug=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
-
+    
     java.arg.4=-Djava.net.preferIPv4Stack=true
-
+    
     # allowRestrictedHeaders is required for Cluster/Node communications to work properly
     java.arg.5=-Dsun.net.http.allowRestrictedHeaders=true
     java.arg.6=-Djava.protocol.handler.pkgs=sun.net.www.protocol
-
+    
     # Sets the provider of SecureRandom to /dev/urandom to prevent blocking on VMs
     java.arg.7=-Djava.security.egd=file:/dev/urandom
-
-
+    
+    
     # The G1GC is still considered experimental but has proven to be very advantageous in providing great
     # performance without significant "stop-the-world" delays.
     #java.arg.13=-XX:+UseG1GC
-
+    
     #Set headless mode by default
     java.arg.14=-Djava.awt.headless=true
+    
   config.yml: |
+    # Licensed to the Apache Software Foundation (ASF) under one or more
+    # contributor license agreements.  See the NOTICE file distributed with
+    # this work for additional information regarding copyright ownership.
+    # The ASF licenses this file to You under the Apache License, Version 2.0
+    # (the \"License\"); you may not use this file except in compliance with
+    # the License.  You may obtain a copy of the License at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an \"AS IS\" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    
     MiNiFi Config Version: 3
     Flow Controller:
-      name: ct.mobileapp.horus-minikube.v15
-      comment: ""
+      name: MiNiFi Flow
+      comment: ''
     Core Properties:
       flow controller graceful shutdown period: 10 sec
       flow service write delay interval: 500 ms
       administrative yield duration: 30 sec
       bored yield duration: 10 millis
       max concurrent threads: 1
-      variable registry properties: ""
     FlowFile Repository:
       partitions: 256
       checkpoint interval: 2 mins
@@ -173,176 +151,25 @@ data:
       always sync: false
     Provenance Repository:
       provenance rollover time: 1 min
-      implementation: org.apache.nifi.provenance.MiNiFiPersistentProvenanceRepository
     Component Status Repository:
       buffer size: 1440
       snapshot frequency: 1 min
     Security Properties:
-      keystore: ""
-      keystore type: ""
-      keystore password: ""
-      key password: ""
-      truststore: ""
-      truststore type: ""
-      truststore password: ""
-      ssl protocol: ""
+      keystore: ''
+      keystore type: ''
+      keystore password: ''
+      key password: ''
+      truststore: ''
+      truststore type: ''
+      truststore password: ''
+      ssl protocol: ''
       Sensitive Props:
-        key:
+        key: ''
         algorithm: PBEWITHMD5AND256BITAES-CBC-OPENSSL
         provider: BC
-    Processors:
-      - id: cffd43b6-d476-3b6e-0000-000000000000
-        name: InvokeHTTP
-        class: org.apache.nifi.processors.standard.InvokeHTTP
-        max concurrent tasks: 1
-        scheduling strategy: TIMER_DRIVEN
-        scheduling period: 0 sec
-        penalization period: 30 sec
-        yield period: 1 sec
-        run duration nanos: 0
-        auto-terminated relationships list:
-          - Failure
-          - No Retry
-          - Original
-          - Response
-          - Retry
-        Properties:
-          Add Response Headers to Request: "false"
-          Always Output Response: "false"
-          Attributes to Send:
-          Basic Authentication Password:
-          Basic Authentication Username:
-          Connection Timeout: 5 secs
-          Content-Type: ${mime.type}
-          Digest Authentication: "false"
-          Follow Redirects: "True"
-          HTTP Method: POST
-          Include Date Header: "True"
-          Max Length To Put In Attribute: "256"
-          Penalize on "No Retry": "false"
-          Proxy Host:
-          Proxy Port:
-          Proxy Type: http
-          Remote URL: ??
-          SSL Context Service: 1ec933c4-f366-3a32-0000-000000000000
-          #-----------------------------------------------------------
-          Put Response Body In Attribute:
-          Read Timeout: 15 secs
-          Use Chunked Encoding: "false"
-          etag-max-cache-size: 10MB
-          ignore-response-content: "false"
-          invokehttp-proxy-password:
-          invokehttp-proxy-user:
-          proxy-configuration-service:
-          send-message-body: "true"
-          use-etag: "false"
-      - id: f9ac687b-b7a1-3cdc-0000-000000000000
-        name: ReplaceText
-        class: org.apache.nifi.processors.standard.ReplaceText
-        max concurrent tasks: 1
-        scheduling strategy: TIMER_DRIVEN
-        scheduling period: 0 sec
-        penalization period: 30 sec
-        yield period: 1 sec
-        run duration nanos: 0
-        auto-terminated relationships list:
-          - failure
-        Properties:
-          Character Set: UTF-8
-          Evaluation Mode: Entire text
-          Maximum Buffer Size: 1 MB
-          #Regular Expression: (\d{4}\-\d{2}\-\w{5}\:\d{2}\:\d{2}\.\w+\s+)(.*)
-          Regular Expression: (.*log.*)
-          Replacement Strategy: Regex Replace
-          #Replacement Value: $1 ${CLUSTER_NAME}~${HOSTNAME} $2
-          Replacement Value: ${CLUSTER_NAME}~${HOSTNAME} $1
-      - id: 10cf3349-9e14-3737-0000-000000000000
-        name: RouteText
-        class: org.apache.nifi.processors.standard.RouteText
-        max concurrent tasks: 1
-        scheduling strategy: TIMER_DRIVEN
-        scheduling period: 0 sec
-        penalization period: 30 sec
-        yield period: 1 sec
-        run duration nanos: 0
-        auto-terminated relationships list:
-          - original
-          - unmatched
-        Properties:
-          Character Set: UTF-8
-          Grouping Regular Expression:
-          Ignore Case: "false"
-          Ignore Leading/Trailing Whitespace: "true"
-          Matching Strategy: Matches Regular Expression
-          Routing Strategy: Route to each matching Property Name
-          mylog: .*
-      - id: a9751d3d-4101-3d7d-0000-000000000000
-        name: TailFile - /var/log/containers
-        class: org.apache.nifi.processors.standard.TailFile
-        max concurrent tasks: 1
-        scheduling strategy: TIMER_DRIVEN
-        scheduling period: 5 sec
-        penalization period: 30 sec
-        yield period: 1 sec
-        run duration nanos: 0
-        auto-terminated relationships list: []
-        Properties:
-          File Location: Local
-          File to Tail: .*log
-          Initial Start Position: Current Time
-          Rolling Filename Pattern:
-          tail-base-directory: /var/log/containers
-          tail-mode: Multiple files
-          tailfile-lookup-frequency: 10 seconds
-          tailfile-maximum-age: 6 hours
-          tailfile-recursive-lookup: "true"
-    Controller Services:
-      - id: 1ec933c4-f366-3a32-0000-000000000000
-        name: HorusStandardRestrictedSSLContextService
-        type: org.apache.nifi.ssl.StandardRestrictedSSLContextService
-        Properties:
-          Keystore Filename: /opt/minifi/ssl/certs/keystore.jks
-          Keystore Password: changeme
-          Keystore Type: JKS
-          SSL Protocol: TLS
-          Truststore Filename: /opt/minifi/ssl/certs/truststore.jks
-          Truststore Password: changeit
-          Truststore Type: JKS
-          key-password:
+    Processors: []
     Process Groups: []
-    Input Ports: []
-    Output Ports: []
     Funnels: []
-    Connections:
-      - id: 7a2c73e5-d7df-3d44-0000-000000000000
-        name: ReplaceText/success/RouteText
-        source id: f9ac687b-b7a1-3cdc-0000-000000000000
-        source relationship names:
-          - success
-        destination id: 10cf3349-9e14-3737-0000-000000000000
-        max work queue size: 10000
-        max work queue data size: 1 GB
-        flowfile expiration: 0 sec
-        queue prioritizer class: ""
-      - id: 418ea9e8-cb79-3368-0000-000000000000
-        name: TailFile/success/InvokeHTTP
-        source id: 10cf3349-9e14-3737-0000-000000000000
-        source relationship names:
-          - mylog
-        destination id: cffd43b6-d476-3b6e-0000-000000000000
-        max work queue size: 10000
-        max work queue data size: 1 GB
-        flowfile expiration: 0 sec
-        queue prioritizer class: ""
-      - id: 6549d8f0-24d4-3896-0000-000000000000
-        name: TailFile - /var/log/pods/success/ReplaceText
-        source id: a9751d3d-4101-3d7d-0000-000000000000
-        source relationship names:
-          - success
-        destination id: f9ac687b-b7a1-3cdc-0000-000000000000
-        max work queue size: 10000
-        max work queue data size: 1 GB
-        flowfile expiration: 0 sec
-        queue prioritizer class: ""
+    Connections: []
     Remote Process Groups: []
     NiFi Properties Overrides: {}
