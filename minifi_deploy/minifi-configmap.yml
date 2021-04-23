@@ -69,11 +69,11 @@ data:
     # Optional.  Defaults to a hardware based unique identifier
     nifi.c2.agent.identifier=baggage-kube-1
     ## Define TLS security properties for C2 communications
-    nifi.c2.security.truststore.location=/opt/minifi/ssl/certs/truststore.jks
-    nifi.c2.security.truststore.password=changeit
+    nifi.c2.security.truststore.location=
+    nifi.c2.security.truststore.password=
     nifi.c2.security.truststore.type=JKS
-    nifi.c2.security.keystore.location=/opt/minifi/ssl/certs/keystore.jks
-    nifi.c2.security.keystore.password=changeme
+    nifi.c2.security.keystore.location=
+    nifi.c2.security.keystore.password=
     nifi.c2.security.keystore.type=JKS
     nifi.c2.security.need.client.auth=true
 
