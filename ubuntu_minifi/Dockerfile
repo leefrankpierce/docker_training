@@ -9,4 +9,4 @@ RUN apt -y install curl
 RUN apt -y install telnet
 COPY ./minifi /opt/minifi
 WORKDIR /opt/minifi
-ENTRYPOINT ["/opt/minifi/bin/nostop-minifi.sh","start"]
+ENTRYPOINT ["/opt/minifi/bin/nonstop-minifi.sh","start"]
