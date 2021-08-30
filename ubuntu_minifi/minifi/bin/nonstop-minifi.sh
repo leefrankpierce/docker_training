@@ -330,7 +330,7 @@ run() {
     # Wait just a bit (3 secs) to wait for the logging to finish and then echo a new-line.
     # We do this to avoid having logs spewed on the console after running the command and then not giving
     # control back to the user
-    bash
+    tail -f /dev/null
    # sleep 3
     echo
 }
