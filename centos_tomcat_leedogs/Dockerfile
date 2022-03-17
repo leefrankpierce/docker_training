@@ -6,10 +6,11 @@ MAINTAINER “Yourname" <lee.pierce@aa.com>
 RUN yum -y install java-1.8.0-openjdk*
 RUN yum -y install wget
 WORKDIR /opt
-RUN wget https://apache.claz.org/tomcat/tomcat-10/v10.0.5/bin/apache-tomcat-10.0.5.tar.gz
+RUN wget --no-check-certificate https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.18/bin/apache-tomcat-10.0.18.tar.gz
 RUN gunzip *gz
 RUN tar xvfp *tar
 RUN rm *tar
-COPY ./leeJS /opt/apache-tomcat-10.0.5/webapps/leeJS
-WORKDIR /opt/apache-tomcat-10.0.5/bin 
-ENTRYPOINT ["/opt/apache-tomcat-10.0.5/bin/catalina.sh","run"]
+COPY ./leeJS /opt/apache-tomcat-10.0.18/webapps/leeJS
+WORKDIR /opt/apache-tomcat-10.0.18/bin
+ENTRYPOINT ["/opt/apache-tomcat-10.0.18/bin/catalina.sh","run"]
+
