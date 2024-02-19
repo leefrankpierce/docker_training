@@ -1,10 +1,8 @@
-FROM centos:7
+FROM ubuntu
 MAINTAINER “Yourname" <lee.pierce@aa.com>
-#RUN yum -y update
-#RUN yum -y install net-tools
-#RUN yum -y install bind-utils
-RUN yum -y install java-1.8.0-openjdk*
-RUN yum -y install wget
+RUN apt-get update
+RUN apt-get -y install openjdk-17-jre
+RUN apt-get -y install wget
 WORKDIR /opt
 RUN wget --no-check-certificate https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.18/bin/apache-tomcat-10.1.18.tar.gz
 RUN gunzip *gz

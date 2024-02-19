@@ -1,0 +1,21 @@
+#OS PREP
+starting with centos
+yum -y install docker
+systemctl enable docker
+systemctl start docker
+yum -y install git
+#Download my files
+git clone https://github.com/leefrankpierce/docker_training
+
+#docker build
+docker build --rm -t centos-tomcat-leedogs:v2.1 . 
+docker run --name dog -dp 8888:8080 centos-tomcat-leedogs:v2.1  
+http://localhost:8888/leeJS/
+or 
+http://192.168.1.130:8888/leeJS/
+
+docker run --name dog -it -p 8888:8080 centos-tomcat-leedogs:v2.1
+docker attach dog
+docker ps -a
+docker stop b461816a7b69
+docker rm $(docker ps -a -q)
