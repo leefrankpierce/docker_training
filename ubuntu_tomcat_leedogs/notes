@@ -1,3 +1,4 @@
+#NOTE all below steps are to aid in forming your own images, the names change due to when the note was added
 #OS PREP
 starting with centos
 yum -y install docker
@@ -19,3 +20,16 @@ docker attach dog
 docker ps -a
 docker stop b461816a7b69
 docker rm $(docker ps -a -q)
+
+#Upload to dockerhub
+docker image ls
+REPOSITORY              TAG       IMAGE ID       CREATED         SIZE
+ubuntu-tomcat-leedogs   V1.1      ce02eec7376d   8 minutes ago   680MB
+
+
+docker login #Get logged into Docker hub, Sets up the connection.
+
+# Tag or alias the image pointing to the dockerhub repo (dockerhub is presumed)
+docker image tag ubuntu-tomcat-leedogs:V1.1 leefrankpierce/leedogs:40
+# Push the image to dockerhub
+docker image push leefrankpierce/leedogs:40
