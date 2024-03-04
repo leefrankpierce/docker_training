@@ -9,6 +9,7 @@ RUN gunzip *gz
 RUN tar xvfp *tar
 RUN rm *tar
 COPY ./leeJS /opt/apache-tomcat-10.1.18/webapps/leeJS
+EXPOSE 8080
 WORKDIR /opt/apache-tomcat-10.1.18/bin
 ENTRYPOINT ["/opt/apache-tomcat-10.1.18/bin/catalina.sh","run"]
 
