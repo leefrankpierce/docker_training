@@ -15,7 +15,7 @@ git clone https://github.com/leefrankpierce/docker_training
 #Cd into the cloned repo and find the Dockerfile, update to your usage. 
 #Update the Node JS for your usage.
 
-#docker build 
+#docker build
 # Please change to your own name, the period at the end is important.
 # "docker build", Cleanup "--t", Name the image "-t", look in the current dir for a Dockerfile "."
 
