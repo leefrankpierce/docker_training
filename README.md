@@ -9,6 +9,7 @@
 #The point is to develop an understanding of docker, not create a usable product.
 
 #Download files
+
 git clone https://github.com/leefrankpierce/docker_training
 
 #Cd into the cloned repo and find the Dockerfile, update to your usage. 
