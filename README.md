@@ -49,6 +49,7 @@ docker rm $(docker ps -a -q)
 docker image ls
 
 REPOSITORY              TAG       IMAGE ID       CREATED         SIZE
+
 ubuntu-tomcat-leedogs   V1.1      ce02eec7376d   8 minutes ago   680MB
 
 #Log into Docker hub. This connection remains for your session.
