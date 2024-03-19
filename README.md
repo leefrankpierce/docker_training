@@ -16,7 +16,7 @@ git clone https://github.com/leefrankpierce/docker_training
 #Update the Node JS for your usage.
 
 #docker build
-# Please change to your own name, the period at the end is important.
+# Please change to your own name, the period at the end is important
 # "docker build", Cleanup "--t", Name the image "-t", look in the current dir for a Dockerfile "."
 
 docker build --rm -t centos-tomcat-leedogs:v2.1 . 
