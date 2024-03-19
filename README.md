@@ -16,18 +16,18 @@ git clone https://github.com/leefrankpierce/docker_training
 #Update the Node JS for your usage.
 
 #docker build
-# Please change to your own name, the period at the end is important
-# "docker build", Cleanup "--t", Name the image "-t", look in the current dir for a Dockerfile "."
+#Please change to your own name, the period at the end is important
+#"docker build", Cleanup "--t", Name the image "-t", look in the current dir for a Dockerfile "."
 
 docker build --rm -t centos-tomcat-leedogs:v2.1 . 
 #Run the image in the local docker environment (desktop) 
-# "docker run", name the container "--name", create a termninal "-it", map ports from laptop to into docker "-dp", image to run
+#"docker run", name the container "--name", create a termninal "-it", map ports from laptop to into docker "-dp", image to run
 
 docker run --name dog -it -dp 8888:8080 centos-tomcat-leedogs:v2.1  
-# From a web browser "localhost" is your laptop, Port mapped above ":", Path to trigger tomcat.
+#From a web browser "localhost" is your laptop, Port mapped above ":", Path to trigger tomcat.
 
 http://localhost:8888/leeJS/
-# or if running from a server
+#or if running from a server
 
 http://server IP:8888/leeJS/
 
@@ -66,7 +66,7 @@ docker image tag ubuntu-tomcat-leedogs:V1.1 leefrankpierce/leedogs:40
 
 docker image ls
 #See the new tag local to your docker environment.
-# Push the image to dockerhub
+#Push the image to dockerhub
 #docker image push "name you created when making the tag"
 
 docker image push leefrankpierce/leedogs:40
