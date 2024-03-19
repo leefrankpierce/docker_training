@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: logagent-configmap
-  namespace: logging
-data:
-  CLUSTER_NAME: ??
