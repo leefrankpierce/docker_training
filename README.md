@@ -35,10 +35,13 @@ docker build --rm -t centos-tomcat-leedogs:v2.1 .
 ```bash
 docker run --name dog -it -dp 8888:8080 centos-tomcat-leedogs:v2.1  
 ```
-
+```
 [http://localhost:8888/leeJS/](http://localhost:8888/leeJS/)
+```
 - or if running from a server
+  ```
 [http://server_IP:8888/leeJS/](http://server_IP:8888/leeJS/)
+```
 
 # To log into the running container.
 ```bash
