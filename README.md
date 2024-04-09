@@ -21,7 +21,7 @@ git clone https://github.com/leefrankpierce/docker_training
 - Cd into the cloned repo and find the Dockerfile, update to your usage. 
 - Update the Node JS for your usage.
 
-# docker build
+### 2. docker build
 - Please change to your own name, the period at the end is important
 - "docker build", Cleanup "--t", Name the image "-t", look in the current dir for a Dockerfile "."
 
@@ -29,8 +29,8 @@ git clone https://github.com/leefrankpierce/docker_training
 docker build --rm -t centos-tomcat-leedogs:v2.1 . 
 ```
 
-# Run the image in the local Docker environment (desktop) 
-# "docker run", name the container "--name", create a terminal "-it", map ports from laptop to into Docker "-dp", image to run
+### 3. Run the image in the local Docker environment (desktop) 
+- "docker run", name the container "--name", create a terminal "-it", map ports from laptop to into Docker "-dp", image to run
 
 ```bash
 docker run --name dog -it -dp 8888:8080 centos-tomcat-leedogs:v2.1  
