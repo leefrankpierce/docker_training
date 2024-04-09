@@ -7,6 +7,7 @@
 #The following example is to be run on your own laptop.
 #If a server is used, we need to vary the ports to prevent port conflicts.
 #The point is to develop an understanding of docker, not create a usable product.
+#The author points out that the users would pull the offical tomcat image rather than making one themselves. 
 
 #Download files
 
