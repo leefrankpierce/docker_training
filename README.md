@@ -26,14 +26,14 @@ git clone https://github.com/leefrankpierce/docker_training
 - "docker build", Cleanup "--t", Name the image "-t", look in the current dir for a Dockerfile "."
 
 ```bash
-docker build --rm -t centos-tomcat-leedogs:v2.1 . 
+docker build --rm -t ubuntu-tomcat-leedogs:v2.1 . 
 ```
 
 ### 3. Run the image in the local Docker environment (desktop) 
 - "docker run", name the container "--name", create a terminal "-it", map ports from laptop to into Docker "-dp", image to run
 
 ```bash
-docker run --name dog -it -dp 8888:8080 centos-tomcat-leedogs:v2.1  
+docker run --name dog -it -dp 8888:8080 ubuntu-tomcat-leedogs:v2.1  
 ```
 
 ```bash
@@ -78,7 +78,7 @@ docker image ls
 ```
 REPOSITORY              TAG       IMAGE ID       CREATED         SIZE
 
-ubuntu-tomcat-leedogs   V1.1      ce02eec7376d   8 minutes ago   680MB
+ubuntu-tomcat-leedogs   v2.1      ce02eec7376d   8 minutes ago   680MB
 ```
 
 - Log into Docker hub. This connection remains for your session.
